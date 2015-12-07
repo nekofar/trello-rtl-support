@@ -15,6 +15,10 @@
     });
 
     $(document).ready(function () {
+        // add Noto Arabic Naskh
+        $('<link/>').attr({rel: 'stylesheet',href:'https://fonts.googleapis.com/earlyaccess/notonaskharabic.css'})
+            .appendTo('head');
+
         $(doms).each(function () {
             updateStyle($(this));
         });
@@ -23,6 +27,10 @@
     $('body').on('input blur focus', inputs, function (e) {
         updateStyle($(this));
     });
+    
+    function updateFont(target) {
+        $(target).css('font-family', "Noto Naskh Arabic");
+    }
     
     function updateSpace(target) {
         $('*', target).each(function () {
@@ -83,6 +91,7 @@
 
         if (matched) {
             target.css(rtl);
+            updateFont(target);
             updateSpace(target);
         } else {
             target.css(ltr);
