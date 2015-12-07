@@ -10,7 +10,9 @@
 
     $(document).ajaxComplete(function () {
         $(doms).each(function () {
-            updateStyle($(this));
+            if (!$(this).attr('style')) {
+                updateStyle($(this));
+            }
         });
     });
 
